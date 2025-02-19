@@ -60,4 +60,14 @@
   .filter-bar {
     display: flex;
   }
+
+  .edit-button {
+    border-radius: .25rem;
+    background-color: var(--outline)
+  }
+
+  .like-button {
+    border-radius: .25rem;
+    background-color: var(--outline)
+  }
   
