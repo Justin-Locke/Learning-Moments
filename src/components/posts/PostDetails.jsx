@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { getPostById } from "../../services/postServices"
 import "./Posts.css"
 import { likePost } from "../../services/likeServices"
@@ -10,6 +10,7 @@ export const PostDetails = ({ currentUser }) => {
     const [userLiked, setUserLiked] = useState(false)
     const [newLike, setNewLike] = useState(false)
     const { postId } = useParams()
+    const navigate = useNavigate();
 
     
     useEffect(() => {
@@ -17,7 +18,7 @@ export const PostDetails = ({ currentUser }) => {
             const postObj = data[0]
             setPost(postObj)
         })
-    }, [postId])
+    }, [postId, userLiked])
 
     useEffect(() => {
         if (post.likes) {
@@ -31,13 +32,19 @@ export const PostDetails = ({ currentUser }) => {
 
     useEffect(() => {
         if (newLike) {
-            likePost(currentUser.id, post.id)
+            likePost(currentUser.id, post.id).then(() => {
+                navigate(`/posts/${post.id}`)
+            }) 
+        setUserLiked(true)
+        setNewLike(false)
         }
     }, [newLike])
 
+
+
     const handleButtonEvent = ((event) => {
         if(event.target.name === "like") {
-            setNewLike(true)            
+            setNewLike(true)        
         }
         if(event.target.name === "edit") {
             console.log("edit")

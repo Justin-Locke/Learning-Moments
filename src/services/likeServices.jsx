@@ -12,3 +12,15 @@ export const likePost = (userId, postId) => {
         body: JSON.stringify(newLike)
     })
 }
+
+export const removeLike = () => {
+    const existingLike = fetch(`http://localhost:8088/likes?userId=${userId}&postId=${postId}`).then(res => res.json())
+
+    if (existingLike) {
+        return fetch(`http://localhost:8088/likes/${likeId}`, {
+            method: "DELETE"
+        })
+    } else {
+        console.error("No Like To Remove")
+    }
+}
