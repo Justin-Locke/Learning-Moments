@@ -1,9 +1,10 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import { getAllPosts } from "../services/postServices"
-import "../styles/posts.css"
+import { getAllPosts } from "../../services/postServices"
+import "./Posts.css"
 import { Post } from "./Post"
-import { getAllTopics } from "../services/topicsServices"
+import { getAllTopics } from "../../services/topicsServices"
+import { Link } from "react-router-dom"
 
 
 export const PostsList = () => {
@@ -71,10 +72,12 @@ export const PostsList = () => {
             <div className="posts">
                 {filteredPosts.map((postObj) => {
                     return (
+                        <Link to={`/posts/${postObj.id}`} key={postObj.id}>
                         <Post 
                         postObj={postObj}
                         key={postObj.id}
                         />
+                        </Link>
                     )
                 })} 
 
