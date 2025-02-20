@@ -46,7 +46,7 @@ export const CreatePost = ({ currentUser }) => {
         }
 
         createNewPost(postToSave).then(() => {
-            navigate(`/posts`)
+            navigate(`/myPosts`)
         })
     }
 

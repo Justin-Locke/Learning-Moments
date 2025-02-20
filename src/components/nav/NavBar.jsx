@@ -13,7 +13,7 @@ export const NavBar = () => {
             <Link to={'/createPost'}>New Post</Link>
         </li>
         <li className="navbar-item">
-            {/* <Link to={'/employees'}>Employees</Link> */}
+            <Link to={'/myPosts'}>My Posts</Link>
         </li>
         <li className="navbar-item">
             {/* <Link to={'/profile'}>Profile</Link> */}

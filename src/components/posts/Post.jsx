@@ -1,5 +1,7 @@
 export const Post = ({ postObj }) => {
-    return <section className="post">
+    return (
+        <div>
+    <section className="post">
     <header className="post-title">
         <div className="post-info">{postObj.title}</div>
     </header>
@@ -12,4 +14,6 @@ export const Post = ({ postObj }) => {
         </div>
     </footer>
 </section>
+</div>
+    )
 }
