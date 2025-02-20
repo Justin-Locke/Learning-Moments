@@ -3,6 +3,8 @@ import { Routes, Route, Outlet } from "react-router-dom"
 import { PostsList } from "../components/posts/PostsList"
 import { NavBar } from "../components/nav/NavBar"
 import { PostDetails } from "../components/posts/PostDetails"
+import { CreatePost } from "../components/posts/CreatePost"
+import { MyPosts } from "../components/posts/MyPosts"
 
 export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})
@@ -31,7 +33,8 @@ export const ApplicationViews = () => {
                 <Route path=":postId" element={<PostDetails currentUser={currentUser} />} />
                 <Route path="edit/:postId" element={<>EDIT POST</>}/>
             </Route>
-
+            <Route path="createPost" element={ <CreatePost currentUser={currentUser} /> }/>
+            <Route path="myPosts" element={ <MyPosts currentUser={currentUser} /> } />
             </Route>
 
 
