@@ -8,9 +8,7 @@ import { likePost } from "../../services/likeServices"
 export const PostDetails = ({ currentUser }) => {
     const [ post, setPost ] = useState({})
     const [userLiked, setUserLiked] = useState(false)
-    const [newLike, setNewLike] = useState(false)
     const { postId } = useParams()
-    const navigate = useNavigate();
 
     
     useEffect(() => {
@@ -30,21 +28,13 @@ export const PostDetails = ({ currentUser }) => {
             
     }, [post, currentUser])
 
-    useEffect(() => {
-        if (newLike) {
-            likePost(currentUser.id, post.id).then(() => {
-                navigate(`/posts/${post.id}`)
-            }) 
-        setUserLiked(true)
-        setNewLike(false)
-        }
-    }, [newLike])
-
-
+    
 
     const handleButtonEvent = ((event) => {
         if(event.target.name === "like") {
-            setNewLike(true)        
+            likePost(currentUser.id, post.id).then(() => {
+                setUserLiked(true)
+            })
         }
         if(event.target.name === "edit") {
             console.log("edit")

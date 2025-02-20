@@ -10,7 +10,7 @@ export const NavBar = () => {
             <Link to='/posts'>Posts</Link>
         </li>
         <li className="navbar-item">
-            {/* <Link to={'/customers'}>Customers</Link> */}
+            <Link to={'/createPost'}>New Post</Link>
         </li>
         <li className="navbar-item">
             {/* <Link to={'/employees'}>Employees</Link> */}
